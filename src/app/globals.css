@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(180deg, #0E1112 0%, #00090E 100%);
+  height: 100%;
+}
+
+.app-container {
+  max-width: 1200px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 56px 16px;
+  display: flex;
+  gap: 28px;
+  height: 100%;
+}
