@@ -1,14 +1,15 @@
 import { Card } from "@/components/Card";
 import styles from "./page.module.css";
 import logger from "@/logger";
+import Link from "next/link";
 
 /**
  * Return all posts from backend
  * @returns JSON
  */
-async function getAllPosts() {
+async function getAllPosts(page) {
   const response = await fetch(
-    "http://localhost:3042/posts?_page=1&_per_page=4"
+    `http://localhost:3042/posts?_page=${page}&_per_page=4`
   );
 
   if (!response.ok) {
@@ -20,14 +21,28 @@ async function getAllPosts() {
   return response.json();
 }
 
-export default async function Home() {
-  const posts = await getAllPosts();
+export default async function Home({ searchParams }) {
+  const currentPage = parseInt(searchParams?.page || 1);
+  const { data: posts, prev, next } = await getAllPosts(currentPage);
 
   return (
     <main className={styles.main}>
-      {posts.data.map((post) => (
-        <Card post={post} />
+      {posts.map((post) => (
+        <Card post={post} key={post.id} />
       ))}
+
+      <div className="footer">
+        {prev && (
+          <Link href={`/?page=${prev}`} className={styles.pagination}>
+            Página anterior
+          </Link>
+        )}
+        {next && (
+          <Link href={`/?page=${next}`} className={styles.pagination}>
+            Próxima página
+          </Link>
+        )}
+      </div>
     </main>
   );
 }

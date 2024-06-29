@@ -3,6 +3,13 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     height: fit-content;
+
+    .pagination {
+        color: #BFFFC3;
+        font-size: 18px;
+        text-align: center;
+        display: inline-block;
+    }
 }
 
 @media screen and (max-width: 1000px) {

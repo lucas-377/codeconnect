@@ -22,3 +22,10 @@ body {
   gap: 28px;
   min-height: 100vh;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  grid-column: span 2;
+  text-align: center;
+}
