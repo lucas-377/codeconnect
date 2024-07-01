@@ -31,7 +31,7 @@ export default async function Home({ searchParams }) {
         <Card post={post} key={post.id} />
       ))}
 
-      <div className="footer">
+      <div className="footer-links">
         {prev && (
           <Link href={`/?page=${prev}`} className={styles.pagination}>
             Página anterior
