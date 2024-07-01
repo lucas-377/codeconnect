@@ -14,7 +14,7 @@ export const Card = ({ post }) => {
       <section>
         <h2>{post.title}</h2>
         <p>{post.body}</p>
-        <a href="#">Ver detalhes</a>
+        <a href={`/posts/${post.slug}`}>Ver detalhes</a>
       </section>
       <footer>
         <Avatar name={post.author.username} imageSrc={post.author.avatar} />

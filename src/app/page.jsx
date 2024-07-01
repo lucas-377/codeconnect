@@ -21,7 +21,7 @@ async function getAllPosts(page) {
   return response.json();
 }
 
-export default async function Home({ searchParams }) {
+export default async function HomePage({ searchParams }) {
   const currentPage = parseInt(searchParams?.page || 1);
   const { data: posts, prev, next } = await getAllPosts(currentPage);
 
