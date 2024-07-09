@@ -3,7 +3,7 @@ import { Avatar } from "../Avatar";
 
 import styles from "./card.module.scss";
 
-export const Card = ({ post }) => {
+export const Card = ({ post, link = true }) => {
   return (
     <article className={styles.card}>
       <header>
@@ -14,7 +14,7 @@ export const Card = ({ post }) => {
       <section>
         <h2>{post.title}</h2>
         <p>{post.body}</p>
-        <a href={`/posts/${post.slug}`}>Ver detalhes</a>
+        {link && <a href={`/posts/${post.slug}`}>Ver detalhes</a>}
       </section>
       <footer>
         <Avatar name={post.author.username} imageSrc={post.author.avatar} />

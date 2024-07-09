@@ -1,6 +1,9 @@
+import { Card } from "@/components/Card";
 import logger from "@/logger";
 import { remark } from "remark";
 import html from "remark-html";
+
+import styles from "./page.module.scss";
 
 /**
  * Return one post from backend
@@ -39,9 +42,15 @@ export default async function PostPage({ params }) {
   const data = await getPostBySlug(params.slug);
 
   return (
-    <>
-      <h1>{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: data.markdown }} />
-    </>
+    <div>
+      <Card post={data} link={false} />
+
+      <h3 className={styles.title}>Código:</h3>
+
+      <div
+        className={styles.code}
+        dangerouslySetInnerHTML={{ __html: data.markdown }}
+      />
+    </div>
   );
 }
